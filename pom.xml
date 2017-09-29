@@ -11,6 +11,7 @@
     <modules>
         <module>JavaCommon</module>
         <module>Model</module>
+        <module>Common</module>
     </modules>
 
     <repositories>

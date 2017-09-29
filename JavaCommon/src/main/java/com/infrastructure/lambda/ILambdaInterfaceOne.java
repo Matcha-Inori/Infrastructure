@@ -2,6 +2,7 @@ package com.infrastructure.lambda;
 
 import com.infrastructure.model.User;
 
+@FunctionalInterface
 public interface ILambdaInterfaceOne
 {
     default void methodOne(User user)
