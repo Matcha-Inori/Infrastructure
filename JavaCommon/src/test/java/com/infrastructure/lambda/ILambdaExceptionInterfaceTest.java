@@ -6,8 +6,6 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static org.junit.Assert.*;
-
 public class ILambdaExceptionInterfaceTest extends BaseTest
 {
     private static final Logger logger = LoggerFactory.getLogger(ILambdaExceptionInterface.class);
@@ -29,5 +27,21 @@ public class ILambdaExceptionInterfaceTest extends BaseTest
 
         iLambdaExceptionInterface = () -> System.out.println("not throw exception");
         iLambdaExceptionInterface.throwsException();
+
+        ILambdaNotExceptionInterface iLambdaNotExceptionInterface = () -> System.out.println("not throw exception");
+        iLambdaNotExceptionInterface.notThrowException();
+
+        try
+        {
+            iLambdaNotExceptionInterface = () -> {throw new BaseRuntimeException();};
+            iLambdaNotExceptionInterface.notThrowException();
+        }
+        catch (BaseRuntimeException exception)
+        {
+            logger.error("ILambdaNotExceptionInterfaceTest: ", exception);
+        }
+
+        //下面这一句编译不过的
+        /*iLambdaNotExceptionInterface = () -> {throw new BaseException();};*/
     }
 }
