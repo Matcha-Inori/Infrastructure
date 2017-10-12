@@ -57,11 +57,9 @@ public class ForTest
             timeList.add(end - start);
         }
 
-        Optional<Long> allTimeOptional = timeList.stream().reduce((result, time) -> result + time);
-        allTimeOptional.ifPresent(allTime -> {
-            System.out.println(allTime);
-            System.out.println(allTime / 3);
-        });
+        long allTime = timeList.stream().mapToLong(time -> time).sum();
+        System.out.println(allTime);
+        timeList.stream().mapToLong(time -> time).average().ifPresent(System.out::println);
     }
 
     @Test
