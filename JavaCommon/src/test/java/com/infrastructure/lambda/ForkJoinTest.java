@@ -116,11 +116,11 @@ class SumSplIterator implements Spliterator<Long>
 
 class SumTask extends RecursiveTask<Long>
 {
-    private static final long STEP;
+    private static final long THRESHOLD;
 
     static
     {
-        STEP = 20;
+        THRESHOLD = 20;
     }
 
     private long start;
@@ -139,7 +139,7 @@ class SumTask extends RecursiveTask<Long>
     protected Long compute()
     {
         long step = end - start;
-        if(step <= STEP)
+        if(step <= THRESHOLD)
             return doCompute();
 
         long sum = end + start;
